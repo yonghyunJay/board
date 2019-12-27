@@ -15,6 +15,9 @@ public class UserController {
 	@Autowired
 	UserRepository userRepository;
 
+	@Autowired
+	HttpSession session;
+	
 	@GetMapping("/signup")
 	public String signup() {
 		return "signup";
@@ -24,10 +27,7 @@ public class UserController {
 	public String signupPost(@ModelAttribute User user) {
 		userRepository.save(user);
 		return "redirect:/";
-	}
-
-	@Autowired
-	HttpSession session;
+	}	
 
 	@GetMapping("/signin")
 	public String signin() {
